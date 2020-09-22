@@ -28,7 +28,7 @@ const FilterButton = ({ title, onClick, children, buttonProps, drawerProps }: IF
 
     return (
         <>
-            <Button type="terciary" variant="outlined" {...buttonProps} onClick={handleOpen}>{title || `Filtrar por`} <img src={FilterIcon} /></Button>
+            <Button type="terciary" variant="outlined" {...buttonProps} onClick={handleOpen}>{title || `Filtrar por`} <img style={{marginLeft: 16}} src={FilterIcon} /></Button>
 
             {!!children && <Drawer
                 {...drawerProps}

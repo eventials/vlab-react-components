@@ -105,6 +105,7 @@ interface IPageHeader extends PageHeaderProps {
                     <Button type="primary" variant="contained">Contained</Button>
                     <Button type="primary" variant="outlined">Outlined</Button>
                     <Button type="primary" variant="text">Text</Button>
+                    <Button type="primary" loading variant="contained">Loading</Button>
                 </Column>
             </>
         ),
@@ -120,8 +121,12 @@ interface IButtonProps {
     type?: ButtonType;
     variant?: ButtonVariant;
     size?: ButtonSize;
+    fullWidth?: boolean;
+  
+    onClick?: any;
+  
     children?: any;
-}        
+}       
 `
     },
     {

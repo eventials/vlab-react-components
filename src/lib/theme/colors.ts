@@ -14,8 +14,8 @@ const colors: any = {
 
 
     // Semantic
-    error: '#0F87C8',
-    success: '#0F87C8',
+    error: '#ED7872',
+    success: '#6BEA9F',
 
     white: '#FFFFFF',
     transparent: 'rgba(0,0,0,0)'
