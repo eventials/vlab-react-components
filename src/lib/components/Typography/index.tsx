@@ -1,7 +1,7 @@
 import React from 'react';
 import colorsList, { Colors } from '../../theme/colors';
 import typographyList, { TypographyTypes } from '../../theme/typography';
-import './typography.css';
+import '../../theme/typography.css';
 
 export interface ITypography{
     type?: TypographyTypes;
