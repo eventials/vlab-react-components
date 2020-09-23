@@ -7,7 +7,7 @@ import { components } from './example/components';
 
 ReactDOM.render(
   <React.StrictMode>
-    <WithMenu routes={[{ name: "Home" }, { name: "Colors" }, ...components.map((component) => ({ name: component.title }))]} >
+    <WithMenu routes={[{ name: "Home" }, { name: "Colors" }, ...components.map((component) => ({ name: component.title })), { name: "Icons" }]} >
       <App />
     </WithMenu>
   </React.StrictMode>,

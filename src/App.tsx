@@ -4,7 +4,9 @@ import Colors from './example/Colors';
 import { components } from './example/components';
 import Editor from './example/Editor';
 import './example/GlobalStyle.css';
+import VlabIcons from './example/Icons';
 import { PageHeader } from './lib';
+import { FilterIcon } from './lib/icons';
 
 const Container = styled.div`
     display: flex;
@@ -32,6 +34,8 @@ const App = () => {
             <Colors />
 
             {components.map((component) => <Editor id={component.title} {...component} />)}
+
+            <VlabIcons />
 
         </Container>
     )

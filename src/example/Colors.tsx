@@ -32,7 +32,7 @@ const Colors = () => {
         for (const key in colors) {
             render.push(
                 <ColorSquad style={{ backgroundColor: colors[key] }}>
-                    <p>{key}</p>
+                    <Typography type="caption">{key}</Typography>
                 </ColorSquad>
             )
         }

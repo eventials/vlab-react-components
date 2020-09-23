@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { VlabLogo, Typography, PageHeader, Button, FilterButton, Topbar } from '../lib';
+import { VideoReportIcon } from '../lib/icons';
 import { Column } from './Doc';
 
 export interface ComponentList {
@@ -106,40 +107,51 @@ interface IPageHeader extends PageHeaderProps {
                     <Button type="primary" variant="outlined">Outlined</Button>
                     <Button type="primary" variant="text">Text</Button>
                     <Button type="primary" loading variant="contained">Loading</Button>
+                    <Button type="primary" leftIcon={<VideoReportIcon />} variant="contained">Left Icon</Button>
+                    <Button type="primary" rightIcon={<VideoReportIcon />} variant="contained">Right Icon</Button>
                 </Column>
             </>
         ),
         githubUser: "pietrobs",
         scope: { Button },
-        code: `<Column><Button type="primary" variant="contained" size="medium">Botão</Button></Column>`,
+        code: `<Column>
+        <Button type="primary" variant="contained" size="medium">Botão</Button>
+        <Button type="primary" RightIcon={<VideoReportIcon />} variant="contained">Right Icon</Button>
+</Column>`,
         doc: `
 type ButtonType = 'primary' | 'secondary' | 'terciary' | 'error' | 'success';
 type ButtonVariant = 'contained' | 'outlined' | 'text';
 type ButtonSize = 'small' | 'medium' | 'large';
 
-interface IButtonProps {
+export interface IButtonProps {
     type?: ButtonType;
     variant?: ButtonVariant;
     size?: ButtonSize;
     fullWidth?: boolean;
+    disabled?: boolean;
+    loading?: boolean;
   
+    leftIcon?: any;
+    rightIcon?: any;
+  
+    tooltipProps?: TooltipProps;
     onClick?: any;
   
     children?: any;
-}       
+}     
 `
     },
     {
         title: "FilterButton",
         description: (
-            <>
+            <Column>
                 <FilterButton drawerProps={{ width: 350 }}>
                     <Column>
                         <p>Aqui entram os filtros</p>
                         <Button onClick={() => { }}>Aplicar</Button>
                     </Column>
                 </FilterButton>
-            </>
+            </Column>
         ),
         githubUser: "pietrobs",
         scope: { FilterButton },

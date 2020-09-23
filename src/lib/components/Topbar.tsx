@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MenuOutlined } from '@ant-design/icons';
 import colors from '../theme/colors';
 import VlabLogo from './VlabLogo';
+import { HamburgerIcon, UserIcon } from '../icons';
+import { Popover } from 'antd';
+import UserMenu from './UserMenu';
 
 interface StyledTopbarProps {
     centralize?: boolean;
@@ -18,17 +20,24 @@ const StyledTopbar = styled.header<StyledTopbarProps>`
     align-items: center;
     justify-content: ${({ centralize }) => centralize ? 'center' : 'flex-start'};
     padding: 0px 30px;
-    z-index: 9999;
+    z-index: 999;
 
-    .hamburger{
+    .hamburger-icon{
         position: absolute;
         left: 30px;
-        top: 20px;
+        top: 10px;
 
         color: ${colors.white};
-        font-size: 14pt;
     }
-`;;
+
+    .user-icon{
+        position: absolute;
+        right: 30px;
+        top: 10px;
+
+        color: ${colors.secondary};
+    }
+`;
 
 interface ITopbar {
     hamburgerAction?: any;
@@ -36,7 +45,8 @@ interface ITopbar {
 }
 
 const Topbar = ({ hamburgerAction, collapsed }: ITopbar) => {
-    const [centralize, setCentralize] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [openPopover, setOpenPopover] = useState(false);
 
     useEffect(() => {
         window.addEventListener('resize', handleCentralize);
@@ -45,15 +55,35 @@ const Topbar = ({ hamburgerAction, collapsed }: ITopbar) => {
     }, []);
 
     const handleCentralize = () => {
-        setCentralize(window.innerWidth < 768);
+        setIsMobile(window.innerWidth < 768);
+    }
+
+    const handleOpenPopover = () => {
+        setOpenPopover(true);
+    }
+
+    const handleClosePopover = () => {
+        setOpenPopover(false);
     }
 
     return (
-        <StyledTopbar centralize={centralize || collapsed}>
+        <StyledTopbar centralize={isMobile || collapsed}>
             <VlabLogo size="small" />
-            {centralize && (
-                <MenuOutlined onClick={hamburgerAction} className="hamburger" />
+            {isMobile && (
+                <HamburgerIcon size="small" onClick={hamburgerAction} className="hamburger-icon" />
             )}
+            <Popover
+                placement="bottom"
+                content={
+                    <UserMenu
+                        arrowLeftClick={handleClosePopover}
+                    />}
+                trigger="click"
+                visible={openPopover}
+                onVisibleChange={(visible) => setOpenPopover(visible)}
+            >
+                <UserIcon size="small" className="user-icon" onClick={handleOpenPopover} />
+            </Popover>
         </StyledTopbar>
     );
 };

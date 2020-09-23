@@ -5,37 +5,6 @@ import Typography from "./components/Typography";
 import PageHeader from "./components/PageHeader";
 import FilterButton from "./components/FilterButton";
 import Topbar from "./components/Topbar";
-import colors from "./theme/colors";
-import typography from './theme/typography';
-
-// To do
 import { Card, Tooltip, Timeline, Tag, Tabs, Table, List, Empty, Calendar, Badge, Avatar, Modal, Drawer, Alert, notification, Popconfirm, Skeleton } from 'antd';
 
-export { 
-    Logo, 
-    VlabLogo, 
-    Button, 
-    Typography,
-     PageHeader,
-     FilterButton,
-     Topbar,
-     Card,
-     Tooltip,
-     Timeline,
-     Tag,
-     Tabs,
-     Table,
-     List,
-     Empty,
-     Calendar,
-     Badge,
-     Avatar,
-     Modal,
-     Drawer,
-     Alert, 
-     notification, 
-     Popconfirm,
-     Skeleton,
-     colors,
-     typography,
-    };
+export { Logo, VlabLogo, Button, Typography, PageHeader, FilterButton, Topbar, Card, Tooltip, Timeline, Tag, Tabs, Table, List, Empty, Calendar, Badge, Avatar, Modal, Drawer, Alert, notification, Popconfirm, Skeleton };
