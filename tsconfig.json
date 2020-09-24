@@ -5,28 +5,19 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
+    "outDir": "dist",
     "declaration": true,
     "skipLibCheck": true,
     "jsx": "react",
     "noImplicitAny": false,
     "moduleResolution": "node",
     "skipDefaultLibCheck": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
   },
   "include": [
-    "dist"
-  ],
-  "exclude": [
-    "node_modules"
+    "./src"
   ]
 }

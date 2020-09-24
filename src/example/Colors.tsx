@@ -29,7 +29,7 @@ const ColorSquad = styled.div`
 const Colors = () => {
 
     const renderColors = () => {
-        const render = [];
+        const render: any = [];
 
         for (const key in colors) {
             render.push(
