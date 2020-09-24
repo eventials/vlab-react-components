@@ -107,8 +107,6 @@ interface IPageHeader extends PageHeaderProps {
                     <Button type="primary" variant="outlined">Outlined</Button>
                     <Button type="primary" variant="text">Text</Button>
                     <Button type="primary" loading variant="contained">Loading</Button>
-                    <Button type="primary" leftIcon={<VideoReportIcon />} variant="contained">Left Icon</Button>
-                    <Button type="primary" rightIcon={<VideoReportIcon />} variant="contained">Right Icon</Button>
                 </Column>
             </>
         ),

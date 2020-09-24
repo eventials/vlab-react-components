@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Drawer } from 'antd';
 import Button, { IButtonProps } from './Button';
 import { DrawerProps } from 'antd/lib/drawer';
-import { FilterIcon } from '../icons';
+import  FilterIcon from '../icons/filter.svg';
 
 interface IFilterButton {
     title?: string;
@@ -33,7 +33,7 @@ const FilterButton = ({ title, onClick, children, buttonProps, drawerProps }: IF
             variant="outlined" 
             {...buttonProps} 
             onClick={handleOpen}
-            rightIcon={<FilterIcon size="small" />}
+            rightIcon={<img src={FilterIcon} />}
             >
                 {title || `Filtrar por`}
             </Button>

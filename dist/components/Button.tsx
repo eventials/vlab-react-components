@@ -18,6 +18,7 @@ type ButtonType = 'primary' | 'secondary' | 'terciary' | 'error' | 'success';
 type ButtonVariant = 'contained' | 'outlined' | 'text';
 type ButtonSize = 'small' | 'medium' | 'large';
 
+
 export interface IButtonProps {
   type?: ButtonType;
   variant?: ButtonVariant;
@@ -25,6 +26,9 @@ export interface IButtonProps {
   fullWidth?: boolean;
   disabled?: boolean;
   loading?: boolean;
+
+  leftIcon?: any;
+  rightIcon?: any;
 
   tooltipProps?: TooltipProps;
   onClick?: any;
@@ -85,6 +89,9 @@ const getSize = ({ size }: StyledButtonProps) => {
 }
 
 const StyledButton = styled.span<StyledButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: ${getSize};
   margin: 5px;
@@ -108,6 +115,14 @@ const StyledButton = styled.span<StyledButtonProps>`
     }
   }}
 
+  .left-icon{
+    margin-right: 16px;
+  }
+
+  .right-icon{
+    margin-left: 16px;
+  }
+
   .ant-spin{
     color: ${getColor};
     margin-right: 16px;
@@ -118,17 +133,26 @@ const StyledButton = styled.span<StyledButtonProps>`
   }
 `;
 
-const Button = ({ children, tooltipProps, ...props }: IButtonProps) => {
+const Button = ({ children, tooltipProps, leftIcon, rightIcon, ...props }: IButtonProps) => {
 
-
-const antIcon = <LoadingOutlined style={{ fontSize: 24, color: colorsList[getColor(props)] }} spin />;
+  const antIcon = <LoadingOutlined style={{ fontSize: 24, color: colorsList[getColor(props)] }} spin />;
 
   return (
     <Tooltip {...tooltipProps as TooltipProps} color={tooltipProps?.color ? colorsList[tooltipProps.color] : null}>
       <StyledButton {...props} onClick={props.disabled || props.loading ? () => { } : props.onClick}>
+        {!props.loading && 
+        <div className="left-icon">
+          {leftIcon}
+        </div>
+        }
         <Typography type="button" color={getColor(props)}>
           {props.loading && <Spin wrapperClassName="loading" spinning={props.loading} indicator={antIcon} delay={500}></Spin>}{children}
         </Typography>
+        {!props.loading && 
+        <div className="right-icon">
+          {rightIcon}
+        </div>
+        }
       </StyledButton>
     </Tooltip>
   )

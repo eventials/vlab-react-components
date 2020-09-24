@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import colorsList, { Colors } from '../theme/colors';
 import typographyList, { TypographyTypes } from '../theme/typography';
 import '../theme/typography.css';
+
+const StyledTypography = styled.span`
+
+`;
 
 export interface ITypography{
     type?: TypographyTypes;
@@ -31,6 +36,6 @@ const getColor = (color: Colors | undefined) => {
 }
 
 
-const Typography = ({type, color, children}: ITypography) => <span className="vlab-typography" style={{...getTypographyType(type), color: getColor(color) }}>{children}</span>
+const Typography = ({type, color, children}: ITypography) => <StyledTypography className="vlab-typography" style={{...getTypographyType(type), color: getColor(color) }}>{children}</StyledTypography>
 
 export default Typography;

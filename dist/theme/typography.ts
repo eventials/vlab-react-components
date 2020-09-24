@@ -1,57 +1,57 @@
 export default {
     heading1: {
         fontWeight: 700,
-        fontSize: '34pt',
+        fontSize: '34px',
         letterSpacing: 0.25,
     },
     heading2: {
         fontWeight: 700,
-        fontSize: '24pt',
+        fontSize: '24px',
         letterSpacing: 0,
     },
     heading3: {
         fontWeight: 700,
-        fontSize: '20pt',
+        fontSize: '20px',
         letterSpacing: 0.15,
     },
     subtitle1: {
         fontWeight: 700,
-        fontSize: '16pt',
+        fontSize: '16px',
         letterSpacing: 0.15,
     },
     subtitle2: {
         fontWeight: 500,
-        fontSize: '14pt',
+        fontSize: '14px',
         letterSpacing: 0.10,
     },
     body1: {
         fontWeight: 300,
-        fontSize: '16pt',
+        fontSize: '16px',
         letterSpacing: 0.15,
     },
     body2: {
         fontWeight: 300,
-        fontSize: '14pt',
+        fontSize: '14px',
         letterSpacing: 0.20,
     },
     caption: {
         fontWeight: 300,
-        fontSize: '12pt',
+        fontSize: '12px',
         letterSpacing: 0.40,
     },
     button: {
         fontWeight: 600,
-        fontSize: '14pt',
+        fontSize: '14px',
         letterSpacing: 0,
     },
     overline1: {
         fontWeight: 500,
-        fontSize: '10pt',
+        fontSize: '10px',
         letterSpacing: 1.5,
     },
     overline2: {
         fontWeight: 600,
-        fontSize: '10pt',
+        fontSize: '10px',
         letterSpacing: 1.5,
     },
 }

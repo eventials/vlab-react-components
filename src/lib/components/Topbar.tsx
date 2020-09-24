@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import colors from '../theme/colors';
 import VlabLogo from './VlabLogo';
-import { HamburgerIcon, UserIcon } from '../icons';
+import HamburgerIcon from '../icons/hamburger.svg'
+import UserIcon from '../icons/user.svg'
 import { Popover } from 'antd';
 import UserMenu from './UserMenu';
 
@@ -26,6 +27,7 @@ const StyledTopbar = styled.header<StyledTopbarProps>`
         position: absolute;
         left: 30px;
         top: 10px;
+        width: 32px;
 
         color: ${colors.white};
     }
@@ -34,6 +36,7 @@ const StyledTopbar = styled.header<StyledTopbarProps>`
         position: absolute;
         right: 30px;
         top: 10px;
+        width: 32px;
 
         color: ${colors.secondary};
     }
@@ -70,7 +73,7 @@ const Topbar = ({ hamburgerAction, collapsed }: ITopbar) => {
         <StyledTopbar centralize={isMobile || collapsed}>
             <VlabLogo size="small" />
             {isMobile && (
-                <HamburgerIcon size="small" onClick={hamburgerAction} className="hamburger-icon" />
+                <img src={HamburgerIcon} onClick={hamburgerAction} className="hamburger-icon" />
             )}
             <Popover
                 placement="bottom"
@@ -82,7 +85,7 @@ const Topbar = ({ hamburgerAction, collapsed }: ITopbar) => {
                 visible={openPopover}
                 onVisibleChange={(visible) => setOpenPopover(visible)}
             >
-                <UserIcon size="small" className="user-icon" onClick={handleOpenPopover} />
+                <img src={UserIcon} onClick={handleOpenPopover} className="user-icon" />
             </Popover>
         </StyledTopbar>
     );
