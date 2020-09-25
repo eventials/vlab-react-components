@@ -42,7 +42,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "rm -rf dist  && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__ && yarn tsc",
+    "build": "rm -rf dist  && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "tsc": "tsc -p tsconfig.json",
     "generate-icons": "npx @svgr/cli -d dist/icons src/lib/icons && echo Done. Building project..."
   },
