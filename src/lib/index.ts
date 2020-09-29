@@ -7,6 +7,7 @@ import FilterButton from "./components/FilterButton";
 import ConditionalRender from "./components/ConditionalRender";
 import Topbar from "./components/Topbar";
 import Input from "./components/Input";
+import { Password } from "./components/Input";
 import Select from "./components/Select";
 import colors from "./theme/colors";
 import typography from './theme/typography';
@@ -24,6 +25,7 @@ export {
     ConditionalRender,
     Topbar,
     Input,
+    Password,
     Select,
     Card,
     Tooltip,

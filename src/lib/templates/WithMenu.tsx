@@ -39,7 +39,7 @@ export interface IProducts {
 }
 
 export interface IWithMenu {
-    sections: Array<IProducts>
+    sections?: Array<IProducts>
 
     children?: any;
 }

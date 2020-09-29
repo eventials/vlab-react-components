@@ -5,7 +5,8 @@ import { components } from './example/components';
 import Editor from './example/Editor';
 import './example/GlobalStyle.css';
 import VlabIcons from './example/Icons';
-import { PageHeader } from './lib';
+import { Input, PageHeader } from './lib';
+import { Password } from './lib/components/Input';
 
 const Container = styled.div`
     display: flex;
@@ -27,6 +28,10 @@ const App = () => {
 
     return (
         <Container id="Home">
+
+            <div style={{padding: 100}}>
+                <Password placeholder="Teste" />
+            </div>
 
             <PageHeader main title="Style Guid and Components" subTitle="Playground" />
 
