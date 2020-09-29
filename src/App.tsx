@@ -6,7 +6,6 @@ import Editor from './example/Editor';
 import './example/GlobalStyle.css';
 import VlabIcons from './example/Icons';
 import { PageHeader } from './lib';
-import { FilterIcon } from './lib/icons';
 
 const Container = styled.div`
     display: flex;
@@ -28,12 +27,12 @@ const App = () => {
 
     return (
         <Container id="Home">
-            
+
             <PageHeader main title="Style Guid and Components" subTitle="Playground" />
 
             <Colors />
 
-            {components.map((component) => <Editor id={component.title} {...component} />)}
+            {components.map((component) => <Editor key={component.title} id={component.title} {...component} />)}
 
             <VlabIcons />
 

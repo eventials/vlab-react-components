@@ -33,7 +33,7 @@ const Colors = () => {
 
         for (const key in colors) {
             render.push(
-                <CopyToClipboard text={key} onCopy={(text) => message.info(`"${text}" copied to clipboard!`)}>
+                <CopyToClipboard key={key} text={key} onCopy={(text) => message.info(`"${text}" copied to clipboard!`)}>
                     <ColorSquad style={{ backgroundColor: colors[key] }}>
                         <Typography type="caption">{key}</Typography>
                     </ColorSquad>

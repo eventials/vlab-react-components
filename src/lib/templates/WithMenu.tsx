@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Layout, Menu } from 'antd';
 import Topbar from '../components/Topbar';
-import { ExceptionOutlined, FireOutlined, FolderViewOutlined, TableOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { FireOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import colors from '../theme/colors';
 import typography from '../theme/typography';
@@ -11,32 +11,40 @@ const { Footer, Sider, Content } = Layout;
 const StyledLayout = styled(Layout)`
     min-height: 100vh;
 
-    .ant-menu-item{
-        color: ${colors.primary};
-        font-weight: ${typography.body1.fontWeight};
-        font-size: ${typography.body1.fontSize}px;
-        letter-spacing: ${typography.body1.letterSpacing}px;
-    }
+    .vlab-sider{
 
-    .ant-menu-item-selected{
-        background-color: ${colors.extraLightBackground} !important;
-        font-weight: 700;
+        .ant-menu-item{
+            color: ${colors.primary};
+            font-weight: ${typography.body1.fontWeight};
+            font-size: ${typography.body1.fontSize}px;
+            letter-spacing: ${typography.body1.letterSpacing}px;
+        }
+
+        .ant-menu-item-selected{
+            background-color: ${colors.extraLightBackground} !important;
+            font-weight: 700;
+        }
     }
 `;
 
 export interface IRoute {
     name: String;
     icon?: any;
-    path: string;
+    path?: string;
+}
+
+export interface IProducts {
+    title: any;
+    routes: Array<IRoute>;
 }
 
 export interface IWithMenu {
-    routes: Array<IRoute>
+    sections: Array<IProducts>
 
     children?: any;
 }
 
-const WithMenu = ({ children, routes }: any) => {
+const WithMenu = ({ children, sections }: IWithMenu) => {
     const [collapsed, setCollapsed] = useState(false);
 
     useEffect(() => {
@@ -57,13 +65,15 @@ const WithMenu = ({ children, routes }: any) => {
         window.location.hash = `#${route.name}`;
     }
 
+
     return (
         <StyledLayout>
-            <Topbar hamburgerAction={toggleCollapsed} collapsed={collapsed && routes} />
+            <Topbar hamburgerAction={toggleCollapsed} collapsed={collapsed && !!sections} />
             <Layout>
                 {
-                    routes &&
+                    sections &&
                     <Sider
+                        className="vlab-sider"
                         trigger={null}
                         width={250}
                         breakpoint="md"
@@ -86,17 +96,32 @@ const WithMenu = ({ children, routes }: any) => {
                         }}
                     >
                         <Menu style={{ height: '100vh' }} theme="light" defaultSelectedKeys={['0']}>
-                            {routes.map((route: IRoute, index: number) => {
+                            {
+                                sections.map((section) => {
 
-                                return (
-                                    <Menu.Item onClick={beforeClick(route)} key={String(index)} icon={<FireOutlined />}>
-                                        {route.name}
-                                    </Menu.Item>)
-                            })}
+                                    return (
+                                        <>
+                                            <Menu.Item>
+                                                <span className="menu-title">{section.title}</span>
+                                            </Menu.Item>
+                                            {
+                                                section.routes.map((route: IRoute, index: number) => {
+
+                                                    return (
+                                                        <Menu.Item onClick={beforeClick(route)} key={String(index)} icon={<FireOutlined />}>
+                                                            {route.name}
+                                                        </Menu.Item>)
+                                                })
+                                            }
+                                        </>
+                                    )
+                                })
+
+                            }
                         </Menu>
                     </Sider>
                 }
-                <Layout style={{ marginLeft: collapsed || !routes ? 0 : 250, marginTop: 56 }}>
+                <Layout style={{ marginLeft: collapsed || !sections ? 0 : 250, marginTop: 56 }}>
                     <Content>
                         {children}
                     </Content>

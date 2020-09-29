@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { VlabLogo, Typography, PageHeader, Button, FilterButton, Topbar } from '../lib';
-import { VideoReportIcon } from '../lib/icons';
+import { VlabLogo, Typography, PageHeader, Button, FilterButton, ConditionalRender } from '../lib';
 import { Column } from './Doc';
 
 export interface ComponentList {
@@ -154,6 +153,46 @@ export interface IButtonProps {
         githubUser: "pietrobs",
         scope: { FilterButton },
         code: ``,
-        doc: ``
+        doc: `
+interface IFilterButton {
+    title?: string;
+    buttonProps?: IButtonProps;
+    drawerProps?: DrawerProps;
+
+    onClick?: any;
+
+    children?: any;
+}        
+`
+    },
+    {
+        title: "ConditionalRender",
+        description: (
+            <>
+                <Typography type="body1">Componente para renderização condicional.</Typography>
+                <Typography type="body1">Aceita como propriedade o nome da permissão que deve existir no token ou uma expressão boleana para que o componente filho seja renderizado.</Typography>
+
+                <ConditionalRender permission="manage_profile">
+                    <Button>Botão</Button>
+                </ConditionalRender>
+            
+            </>
+        ),
+        githubUser: "pietrobs",
+        scope: { ConditionalRender, Button },
+        code: `
+<ConditionalRender permission="manage_profile">
+    <Button>Botão</Button>
+</ConditionalRender>
+`,
+        doc: `
+type PermissionsType = 'access_control' | 'manage_profile'
+
+interface IConditionalRender{
+    permission?: PermissionsType | Array<PermissionsType>;
+    condition?: boolean;
+    children: any;
+}   
+`
     }
 ];

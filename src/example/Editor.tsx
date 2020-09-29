@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { PageHeader, Skeleton, Spin, Tabs, Tag, Typography } from 'antd';
+import { PageHeader, Skeleton, Tabs, Tag, Typography } from 'antd';
 import {
     LiveProvider,
     LiveEditor,
@@ -96,29 +96,29 @@ const { TabPane } = Tabs;
 const Editor = ({ id, title, description, tag, githubUser, doc, ...props }: any) => {
     const [user, setUser] = useState<any>(null);
 
-    // useEffect(() => {
-        // if (githubUser) loadUser();
-    // }, [githubUser])
+    useEffect(() => {
+        if (githubUser) loadUser();
+    }, [githubUser])
 
-    // const loadUser = async () => {
-    //     const response = await fetch(`https://api.github.com/users/${githubUser}`);
-    //     const responseJSON = await response.json();
+    const loadUser = async () => {
+        const response = await fetch(`https://api.github.com/users/${githubUser}`);
+        const responseJSON = await response.json();
 
-    //     console.log({ responseJSON });
-    //     setUser({
-    //         avatarUrl: responseJSON.avatar_url,
-    //         url: responseJSON.url,
-    //         name: responseJSON.name,
-    //     })
-    // }
+        console.log({ responseJSON });
+        setUser({
+            avatarUrl: responseJSON.avatar_url,
+            url: responseJSON.url,
+            name: responseJSON.name,
+        })
+    }
 
-    // if (!user) {
-    //     return (
-    //         <StyledContainer>
-    //             <Skeleton avatar paragraph={{ rows: 4 }} />
-    //         </StyledContainer>
-    //     )
-    // }
+    if (!user) {
+        return (
+            <StyledContainer>
+                <Skeleton avatar paragraph={{ rows: 4 }} />
+            </StyledContainer>
+        )
+    }
 
     return (
         <StyledContainer>
