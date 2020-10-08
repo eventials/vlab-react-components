@@ -23,7 +23,7 @@ const authStorage = {
 };
 
 export const readCookie = (name: string) => {
-    let result = null;
+    let result: null | string = null;
     const myCookie = document.cookie + ";";
     const searchName = name + "=";
     let start = myCookie.indexOf(searchName);
