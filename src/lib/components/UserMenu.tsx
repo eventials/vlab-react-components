@@ -1,10 +1,11 @@
 import { ArrowLeftOutlined, LogoutOutlined, RightOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar } from 'antd';
+import { Avatar, Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ConditionalRender from './ConditionalRender';
 import colors from '../theme/colors';
 import Typography from './Typography';
+import authStorage from '../utils/authStorage';
 
 const StyledUserMenu = styled.div`
 
@@ -107,6 +108,13 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
         setIsMobile(window.innerWidth < 768);
     }
 
+    const goToIAM = (path: string) => `http://local.iam.vlab.live:3000/#/${path}`;
+
+    const logout = () => {
+        authStorage.clear();
+        goToIAM('login');
+    }
+
     const content = (
         <StyledList>
             <div className="user">
@@ -132,13 +140,19 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
                 <section>
                     <Typography type="overline2" color="primary">CONFIGURAÇÕES</Typography>
                     <ConditionalRender permission="access_control">
-                        <a className="divider" href="#">
-                            <Typography type="subtitle2" color="regentGray">Controle de acesso</Typography>
+                        <a className="divider" href={goToIAM('policies')}>
+                            <Typography type="subtitle2" color="regentGray">Politicas de acesso</Typography>
+                            <RightOutlined />
+                        </a>
+                    </ConditionalRender>
+                    <ConditionalRender permission="access_control">
+                        <a className="divider" href={goToIAM('roles')}>
+                            <Typography type="subtitle2" color="regentGray">Funções</Typography>
                             <RightOutlined />
                         </a>
                     </ConditionalRender>
                     <ConditionalRender permission="manage_profile">
-                        <a className="divider" href="#">
+                        <a className="divider" href={goToIAM('users')}>
                             <Typography type="subtitle2" color="regentGray">Gerenciar perfis</Typography>
                             <RightOutlined />
                         </a>
@@ -147,7 +161,7 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
             </ConditionalRender>
 
             <section>
-                <a>
+                <a onClick={logout}>
                     <Typography type="subtitle2" color="primary">Sair <LogoutOutlined /></Typography>
                 </a>
             </section>

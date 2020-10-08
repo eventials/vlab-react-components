@@ -28,7 +28,7 @@ const StyledLayout = styled(Layout)`
 `;
 
 export interface IRoute {
-    name: String;
+    name: any;
     icon?: any;
     path?: string;
 }
@@ -39,12 +39,13 @@ export interface IProducts {
 }
 
 export interface IWithMenu {
-    sections?: Array<IProducts>
+    sections?: Array<IProducts>,
+    onRouteClick?: (path?: string) => void;
 
     children?: any;
 }
 
-const WithMenu = ({ children, sections }: IWithMenu) => {
+const WithMenu = ({ children, sections, onRouteClick }: IWithMenu) => {
     const [collapsed, setCollapsed] = useState(false);
 
     useEffect(() => {
@@ -62,9 +63,8 @@ const WithMenu = ({ children, sections }: IWithMenu) => {
     }
 
     const beforeClick = (route: IRoute) => () => {
-        window.location.hash = `#${route.name}`;
+        onRouteClick && onRouteClick(route.path);
     }
-
 
     return (
         <StyledLayout>
@@ -95,22 +95,22 @@ const WithMenu = ({ children, sections }: IWithMenu) => {
                             top: 56,
                         }}
                     >
-                        <Menu style={{ height: '100vh' }} theme="light" defaultSelectedKeys={['0']}>
+                        <Menu style={{ height: '100vh' }} theme="light" defaultSelectedKeys={[]}>
                             {
-                                sections.map((section) => {
+                                sections.map((section, sectionIndex) => {
 
                                     return (
                                         <>
-                                            <Menu.Item>
+                                            <Menu.Item key={sectionIndex}>
                                                 <span className="menu-title">{section.title}</span>
                                             </Menu.Item>
                                             {
                                                 section.routes.map((route: IRoute, index: number) => {
-
                                                     return (
-                                                        <Menu.Item onClick={beforeClick(route)} key={String(index)} icon={<FireOutlined />}>
+                                                        <Menu.Item onClick={beforeClick(route)} key={String(sectionIndex) + String(index)} icon={route.icon}>
                                                             {route.name}
-                                                        </Menu.Item>)
+                                                        </Menu.Item>
+                                                    )
                                                 })
                                             }
                                         </>
@@ -122,7 +122,7 @@ const WithMenu = ({ children, sections }: IWithMenu) => {
                     </Sider>
                 }
                 <Layout style={{ marginLeft: collapsed || !sections ? 0 : 250, marginTop: 56 }}>
-                    <Content>
+                    <Content style={{ minHeight: 'calc(100vh - 56px)' }}>
                         {children}
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>VLab ©2020</Footer>
