@@ -20,15 +20,19 @@ const StyledPageHeader = styled(AntdPageHeader)`
 
 const PageHeader = (props: IPageHeader) => {
 
+    const handleBack = () => {
+        window.history.back()
+    }
+
     return (
         <StyledPageHeader
             className={`vlab-page-header ${props.main ? "vlab-page-header-main" : ""}`}
             title={props.main ? <Typography type="heading2" color="primary">{props.title}</Typography> : props.title}
             subTitle={props.main ? <Typography type="caption" color="darkGray">{props.subTitle}</Typography> : props.subTitle}
-            onBack={props.onBack}
+            onBack={props.onBack || handleBack}
             extra={props.extra}
             footer={props.footer}
-        >   
+        >
             {props.children}
         </StyledPageHeader>
     )

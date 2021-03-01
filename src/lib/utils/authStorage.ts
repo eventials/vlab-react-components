@@ -1,6 +1,6 @@
 const STORAGE_NAME = '@VLAB_AUTH_TOKEN';
 const DOMAIN = 'domain=.vlab.live'
-const TOKEN_TIME_TO_EXPIRE = 1/4;
+const TOKEN_TIME_TO_EXPIRE = 1;
 
 const authStorage = {
 
@@ -18,7 +18,8 @@ const authStorage = {
     },
 
     clear: () => {
-        deleteCookie(STORAGE_NAME)
+        deleteCookie(STORAGE_NAME);
+        window.location.reload();
     }
 };
 
@@ -34,18 +35,18 @@ export const readCookie = (name: string) => {
         end = myCookie.indexOf(";", start);
         result = myCookie.substring(start, end);
     }
-    console.log("readCookie", {name, result});
+
     return result;
 };
 
 export const writeCookie = (name: string, value: string, days: number) => {
     var expDate = new Date();
-    expDate.setTime(expDate.getTime() + (days * 24 * 60 * 60) );
-    document.cookie = `${name}=${value}; expires=${expDate.toUTCString()}; ${DOMAIN}`;
+    expDate.setTime(expDate.getTime() + (days * 24 * 60 * 60 * 1000) );
+    document.cookie = `${name}=${value}; expires= ${expDate}; ${DOMAIN}`;
 }
 
-export const deleteCookie = (name: string) => {   
-    document.cookie = name+'=; Max-Age=-99999999;';  
+export const deleteCookie = (name: string) => {
+    document.cookie = `${name}= ; ${DOMAIN};expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
 
 export const parseJwt = (token: string | null): any => {

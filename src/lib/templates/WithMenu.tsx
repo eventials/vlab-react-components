@@ -68,7 +68,7 @@ const WithMenu = ({ children, sections, onRouteClick }: IWithMenu) => {
 
     return (
         <StyledLayout>
-            <Topbar hamburgerAction={toggleCollapsed} collapsed={collapsed && !!sections} />
+            <Topbar hamburgerAction={toggleCollapsed} collapsed={collapsed && !!sections} hideHamburger={!sections} />
             <Layout>
                 {
                     sections &&
