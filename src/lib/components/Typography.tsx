@@ -11,18 +11,29 @@ export interface ITypography {
   className?: string;
   color?: Colors;
   children: any;
+  weight?: number;
 }
 
 const DEFAULT_TYPOGRAPHY = "body1";
 const DEFAULT_COLOR = "darkGray";
 
-const getTypographyType = (type: TypographyTypes | undefined) => {
-  if (!type || !typographyList[type]) return typographyList[DEFAULT_TYPOGRAPHY];
+const getTypographyType = (
+  type: TypographyTypes | undefined,
+  weight?: number
+) => {
+  let selectedTypography = typographyList[DEFAULT_TYPOGRAPHY];
 
+  if (type && typographyList[type]) {
+    selectedTypography = typographyList[type];
+  }
+
+  if (weight) {
+    selectedTypography.fontWeight = weight;
+  }
   // if(!typographyList[type]){
   //     throw new Error(`Invalid typography type: ${type}!`);
   // }
-  return typographyList[type];
+  return selectedTypography;
 };
 
 const getColor = (color: Colors | undefined) => {
@@ -34,10 +45,19 @@ const getColor = (color: Colors | undefined) => {
   return colorsList[color];
 };
 
-const Typography = ({ type, color, children, className }: ITypography) => (
+const Typography = ({
+  type,
+  color,
+  weight,
+  children,
+  className,
+}: ITypography) => (
   <StyledTypography
     className={`vlab-typography ${className}`}
-    style={{ ...getTypographyType(type), color: getColor(color) }}
+    style={{
+      ...getTypographyType(type, weight),
+      color: getColor(color),
+    }}
   >
     {children}
   </StyledTypography>
