@@ -201,6 +201,14 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
               <RightOutlined />
             </a>
           </ConditionalRender>
+          <ConditionalRender permission="manage_profile">
+            <a className="divider" href={goToIAM("anamnese-form")}>
+              <Typography type="subtitle2" color="regentGray">
+                Gerenciar anamnese
+              </Typography>
+              <RightOutlined />
+            </a>
+          </ConditionalRender>
         </section>
       </ConditionalRender>
 
