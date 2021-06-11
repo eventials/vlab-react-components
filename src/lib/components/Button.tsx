@@ -15,7 +15,14 @@ interface StyledButtonProps {
   onlyIcon?: boolean;
 }
 
-type ButtonType = "primary" | "secondary" | "terciary" | "error" | "success";
+type ButtonType =
+  | "primary"
+  | "secondary"
+  | "terciary"
+  | "error"
+  | "success"
+  | "lightGray";
+
 type ButtonVariant = "contained" | "outlined" | "text";
 type ButtonSize = "small" | "medium" | "large";
 
@@ -86,7 +93,7 @@ const getHoverBackgroundColor = ({
 };
 
 const getColor = ({ type, variant, disabled }: StyledButtonProps): Colors => {
-  if (disabled) return colorsList.regentGray;
+  if (disabled || type === "lightGray") return colorsList.regentGray;
   if ((variant === "outlined" || variant === "text") && type) return type;
 
   return "white";
