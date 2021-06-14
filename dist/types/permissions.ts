@@ -1,0 +1,1 @@
+export type PermissionsType = 'access_control' | 'manage_profile'
