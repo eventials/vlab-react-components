@@ -30,7 +30,7 @@ const createTokenPermission = () => {
   const permissions: PermissionsType[] = [];
 
   if (savedState) {
-    const savedStateObject = JSON.parse(savedState ?? `{}`);
+    const savedStateObject = JSON.parse(savedState || `{}`);
 
     if (savedStateObject.settings) {
       FEATURE_FLAGS.forEach((flag) => {
