@@ -164,53 +164,43 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
         </a>
       </section>
 
-      <ConditionalRender permission={["access_control", "manage_profile"]}>
-        <section>
-          <Typography type="overline2" color="primary">
-            CONFIGURAÇÕES
+      <section>
+        <Typography type="overline2" color="primary">
+          CONFIGURAÇÕES
+        </Typography>
+        <a className="divider" href={goToIAM("policies")}>
+          <Typography type="subtitle2" color="regentGray">
+            Politicas de acesso
           </Typography>
-          <ConditionalRender permission="access_control">
-            <a className="divider" href={goToIAM("policies")}>
-              <Typography type="subtitle2" color="regentGray">
-                Politicas de acesso
-              </Typography>
-              <RightOutlined />
-            </a>
-          </ConditionalRender>
-          <ConditionalRender permission="access_control">
-            <a className="divider" href={goToIAM("roles")}>
-              <Typography type="subtitle2" color="regentGray">
-                Funções
-              </Typography>
-              <RightOutlined />
-            </a>
-          </ConditionalRender>
-          <ConditionalRender permission="manage_profile">
-            <a className="divider" href={goToIAM("users")}>
-              <Typography type="subtitle2" color="regentGray">
-                Gerenciar usuários
-              </Typography>
-              <RightOutlined />
-            </a>
-          </ConditionalRender>
-          <ConditionalRender permission="manage_profile">
-            <a className="divider" href={goToIAM("organization")}>
-              <Typography type="subtitle2" color="regentGray">
-                Gerenciar organização
-              </Typography>
-              <RightOutlined />
-            </a>
-          </ConditionalRender>
-          <ConditionalRender permission="manage_profile">
-            <a className="divider" href={goToIAM("anamnese-form")}>
-              <Typography type="subtitle2" color="regentGray">
-                Gerenciar anamnese
-              </Typography>
-              <RightOutlined />
-            </a>
-          </ConditionalRender>
-        </section>
-      </ConditionalRender>
+          <RightOutlined />
+        </a>
+        <a className="divider" href={goToIAM("roles")}>
+          <Typography type="subtitle2" color="regentGray">
+            Funções
+          </Typography>
+          <RightOutlined />
+        </a>
+        <a className="divider" href={goToIAM("users")}>
+          <Typography type="subtitle2" color="regentGray">
+            Gerenciar usuários
+          </Typography>
+          <RightOutlined />
+        </a>
+        <a className="divider" href={goToIAM("organization")}>
+          <Typography type="subtitle2" color="regentGray">
+            Gerenciar organização
+          </Typography>
+          <RightOutlined />
+        </a>
+        <ConditionalRender permission="anamneseForm">
+          <a className="divider" href={goToIAM("anamnese-form")}>
+            <Typography type="subtitle2" color="regentGray">
+              Gerenciar anamnese
+            </Typography>
+            <RightOutlined />
+          </a>
+        </ConditionalRender>
+      </section>
 
       <section>
         <a onClick={() => logout()}>

@@ -1,1 +1,16 @@
-export type PermissionsType = 'access_control' | 'manage_profile'
+export type PermissionsType =
+  | "anamneseForm"
+  | "autoRecording"
+  | "autojoin"
+  | "cameraRequired"
+  | "chatEnabled"
+  | "commandCenter"
+  | "conferenceRoom"
+  | "downloadVideoReportEnabled"
+  | "jwtRequired"
+  | "manageOrganizations"
+  | "schedule"
+  | "sendAgreement"
+  | "shareLink"
+  | "videoReport"
+  | "waitingList";
