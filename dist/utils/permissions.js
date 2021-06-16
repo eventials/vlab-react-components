@@ -24,7 +24,7 @@ const createTokenPermission = () => {
     const savedState = readCookie(STORAGE_SESSION_KEY);
     const permissions = [];
     if (savedState) {
-        const savedStateObject = JSON.parse(savedState ?? `{}`);
+        const savedStateObject = JSON.parse(savedState || `{}`);
         if (savedStateObject.settings) {
             FEATURE_FLAGS.forEach((flag) => {
                 if (savedStateObject.settings[flag] === "true") {
