@@ -15,7 +15,7 @@ const StyledTopbar = styled.header<StyledTopbarProps>`
   display: flex;
   position: fixed;
   width: 100%;
-  background-color: ${colors.darkBackground};
+  background-color: ${colors.white};
   height: 56px;
   flex-direction: row;
   align-items: center;
@@ -23,6 +23,7 @@ const StyledTopbar = styled.header<StyledTopbarProps>`
     centralize ? "center" : "flex-start"};
   padding: 0px 30px;
   z-index: 999;
+  border-bottom: 1px solid ${colors.lightGray};
 
   .hamburger-icon {
     position: absolute;
@@ -47,9 +48,10 @@ interface ITopbar {
   hamburgerAction?: any;
   collapsed?: boolean;
   hideHamburger?: boolean;
+  logoSrc: string;
 }
 
-const Topbar = ({ hamburgerAction, collapsed, hideHamburger }: ITopbar) => {
+const Topbar = ({ hamburgerAction, collapsed, hideHamburger, logoSrc }: ITopbar) => {
   const [isMobile, setIsMobile] = useState(false);
   const [openPopover, setOpenPopover] = useState(false);
 
@@ -74,7 +76,7 @@ const Topbar = ({ hamburgerAction, collapsed, hideHamburger }: ITopbar) => {
   return (
     <StyledTopbar centralize={isMobile || collapsed}>
       <a href={"/"}>
-        <VlabLogo size="small" />
+        <img className="logo" src={logoSrc} />
       </a>
       {isMobile && !hideHamburger && (
         <img
