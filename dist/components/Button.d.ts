@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { TooltipProps } from "antd/lib/tooltip";
 declare type ButtonType = "primary" | "secondary" | "terciary" | "error" | "success" | "lightGray";
 declare type ButtonVariant = "contained" | "outlined" | "text";

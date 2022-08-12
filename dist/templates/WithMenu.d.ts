@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface IRoute {
     name: any;
     icon?: any;

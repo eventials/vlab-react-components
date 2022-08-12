@@ -1,4 +1,3 @@
-/// <reference types="react" />
 declare type CustomIconSize = "small" | "medium" | "large" | "custom";
 export interface ICustomIcon {
     size?: CustomIconSize;

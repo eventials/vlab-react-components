@@ -11,6 +11,8 @@ import { Password } from "./components/Input";
 import Select from "./components/Select";
 import colors from "./theme/colors";
 import typography from './theme/typography';
+import authStorage from "./utils/authStorage";
+import WithMenu from "./templates/WithMenu";
 // To do
 import { Card, Tooltip, Timeline, Tag, Tabs, Table, List, Empty, Calendar, Badge, Avatar, Modal, Drawer, Alert, notification, Popconfirm, Skeleton } from 'antd';
-export { Logo, VlabLogo, Button, Typography, PageHeader, FilterButton, ConditionalRender, Topbar, Input, Password, Select, Card, Tooltip, Timeline, Tag, Tabs, Table, List, Empty, Calendar, Badge, Avatar, Modal, Drawer, Alert, notification, Popconfirm, Skeleton, colors, typography, };
+export { Logo, VlabLogo, Button, Typography, PageHeader, FilterButton, ConditionalRender, Topbar, Input, Password, Select, Card, Tooltip, Timeline, Tag, Tabs, Table, List, Empty, Calendar, Badge, Avatar, Modal, Drawer, Alert, notification, Popconfirm, Skeleton, colors, typography, authStorage, WithMenu };

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface IUserMenu {
     arrowLeftClick: any;
     permissions?: Array<string>;

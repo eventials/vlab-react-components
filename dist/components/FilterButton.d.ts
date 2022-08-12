@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { IButtonProps } from './Button';
 import { DrawerProps } from 'antd/lib/drawer';
 interface IFilterButton {

@@ -11,6 +11,8 @@ import { Password } from "./components/Input";
 import Select from "./components/Select";
 import colors from "./theme/colors";
 import typography from './theme/typography';
+import authStorage from "./utils/authStorage";
+import WithMenu from "./templates/WithMenu";
 
 // To do
 import { Card, Tooltip, Timeline, Tag, Tabs, Table, List, Empty, Calendar, Badge, Avatar, Modal, Drawer, Alert, notification, Popconfirm, Skeleton } from 'antd';
@@ -46,4 +48,6 @@ export {
     Skeleton,
     colors,
     typography,
+    authStorage,
+    WithMenu
 };

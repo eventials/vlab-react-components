@@ -1,4 +1,3 @@
-/// <reference types="react" />
 interface ITopbar {
     hamburgerAction?: any;
     collapsed?: boolean;

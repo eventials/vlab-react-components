@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Colors } from "../theme/colors";
 import { TypographyTypes } from "../theme/typography";
 import "../theme/typography.css";
