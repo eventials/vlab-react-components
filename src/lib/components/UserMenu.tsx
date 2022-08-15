@@ -112,7 +112,14 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
     setIsMobile(window.innerWidth < 768);
   };
 
-  const goToIAM = (path: string) => `/#/${path}`;
+  const goToIAM = (path: string) => {
+    window.location.href = `/#/${path}`;
+    const route = process.env.NODE_ENV === "production" ?
+      `http://iam.vlab.live`
+      : "http://stg-iam.vlab.live";
+
+    window.location.href = `${route}/#/${path}`;
+  };
 
   const logout = () => {
     authStorage.clear();
@@ -150,13 +157,13 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
       </div>
 
       <section>
-        <a className="divider" href={goToIAM("profile")}>
+        <a className="divider" onClick={() => goToIAM("profile")}>
           <Typography type="subtitle2" color="regentGray">
             Alterar dados
           </Typography>
           <RightOutlined />
         </a>
-        <a className="divider" href={goToIAM("change-password")}>
+        <a className="divider" onClick={() => goToIAM("change-password")}>
           <Typography type="subtitle2" color="regentGray">
             Alterar senha
           </Typography>
@@ -168,32 +175,32 @@ export const UserMenu = ({ arrowLeftClick, permissions }: IUserMenu) => {
         <Typography type="overline2" color="primary">
           CONFIGURAÇÕES
         </Typography>
-        <a className="divider" href={goToIAM("policies")}>
+        <a className="divider" onClick={() => goToIAM("policies")}>
           <Typography type="subtitle2" color="regentGray">
             Politicas de acesso
           </Typography>
           <RightOutlined />
         </a>
-        <a className="divider" href={goToIAM("roles")}>
+        <a className="divider" onClick={() => goToIAM("roles")}>
           <Typography type="subtitle2" color="regentGray">
             Funções
           </Typography>
           <RightOutlined />
         </a>
-        <a className="divider" href={goToIAM("users")}>
+        <a className="divider" onClick={() => goToIAM("users")}>
           <Typography type="subtitle2" color="regentGray">
             Gerenciar usuários
           </Typography>
           <RightOutlined />
         </a>
-        <a className="divider" href={goToIAM("organization")}>
+        <a className="divider" onClick={() => goToIAM("organization")}>
           <Typography type="subtitle2" color="regentGray">
             Gerenciar organização
           </Typography>
           <RightOutlined />
         </a>
         <ConditionalRender permission="anamneseForm">
-          <a className="divider" href={goToIAM("anamnese-form")}>
+          <a className="divider" onClick={() => goToIAM("anamnese-form")}>
             <Typography type="subtitle2" color="regentGray">
               Gerenciar anamnese
             </Typography>

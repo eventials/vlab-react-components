@@ -31,7 +31,7 @@ const StyledTopbar = styled.header<StyledTopbarProps>`
     top: 10px;
     width: 32px;
 
-    color: ${colors.white};
+    color: ${colors.darkGray};
   }
 
   .user-icon {

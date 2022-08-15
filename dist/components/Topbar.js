@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import colors from "../theme/colors";
-import VlabLogo from "./VlabLogo";
 import HamburgerIcon from "../icons/hamburger.svg";
 import UserIcon from "../icons/user.svg";
 import { Popover } from "antd";
@@ -10,13 +9,14 @@ const StyledTopbar = styled.header `
   display: flex;
   position: fixed;
   width: 100%;
-  background-color: ${colors.darkBackground};
+  background-color: ${colors.white};
   height: 56px;
   flex-direction: row;
   align-items: center;
   justify-content: ${({ centralize }) => centralize ? "center" : "flex-start"};
   padding: 0px 30px;
   z-index: 999;
+  border-bottom: 1px solid ${colors.lightGray};
 
   .hamburger-icon {
     position: absolute;
@@ -24,7 +24,7 @@ const StyledTopbar = styled.header `
     top: 10px;
     width: 32px;
 
-    color: ${colors.white};
+    color: ${colors.darkGray};
   }
 
   .user-icon {
@@ -36,7 +36,7 @@ const StyledTopbar = styled.header `
     color: ${colors.secondary};
   }
 `;
-const Topbar = ({ hamburgerAction, collapsed, hideHamburger }) => {
+const Topbar = ({ hamburgerAction, collapsed, hideHamburger, logoSrc }) => {
     const [isMobile, setIsMobile] = useState(false);
     const [openPopover, setOpenPopover] = useState(false);
     useEffect(() => {
@@ -55,7 +55,7 @@ const Topbar = ({ hamburgerAction, collapsed, hideHamburger }) => {
     };
     return (React.createElement(StyledTopbar, { centralize: isMobile || collapsed },
         React.createElement("a", { href: "/" },
-            React.createElement(VlabLogo, { size: "small" })),
+            React.createElement("img", { className: "logo", src: logoSrc })),
         isMobile && !hideHamburger && (React.createElement("img", { src: HamburgerIcon, onClick: hamburgerAction, className: "hamburger-icon" })),
         React.createElement(Popover, { placement: "bottom", content: React.createElement(UserMenu, { arrowLeftClick: handleClosePopover }), trigger: "click", visible: openPopover, onVisibleChange: (visible) => setOpenPopover(visible) },
             React.createElement("img", { src: UserIcon, onClick: handleOpenPopover, className: "user-icon" }))));
